@@ -1,4 +1,8 @@
 {
+  "app": {
+    "title": "ポモドーロタイマー",
+    "subtitle": "集中力を高め、生産性を向上させるためのポモドーロテクニック"
+  },
   "timer": {
     "start": "開始",
     "pause": "一時停止",
@@ -11,12 +15,13 @@
     "timeRemaining": "残り時間: {time}",
     "sessionComplete": "セッション完了！",
     "pomodoroTimer": "ポモドーロタイマー",
-    "minutes": "{count}分",
-    "seconds": "{count}秒",
-    "session": "{count}セッション",
+    "minutes": "分",
+    "seconds": "秒",
+    "session": "セッション",
     "nextSession": "次: {type}",
     "focusTime": "集中時間",
-    "breakTime": "休憩時間"
+    "breakTime": "休憩時間",
+    "modeSelector": "モード切り替え"
   },
   "settings": {
     "title": "設定",

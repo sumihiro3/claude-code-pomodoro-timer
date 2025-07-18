@@ -1,4 +1,8 @@
 {
+  "app": {
+    "title": "Pomodoro Timer",
+    "subtitle": "Focus and boost your productivity with the Pomodoro Technique"
+  },
   "timer": {
     "start": "Start",
     "pause": "Pause",
@@ -11,12 +15,13 @@
     "timeRemaining": "Time Remaining: {time}",
     "sessionComplete": "Session Complete!",
     "pomodoroTimer": "Pomodoro Timer",
-    "minutes": "{count} minute | {count} minutes",
-    "seconds": "{count} second | {count} seconds",
-    "session": "{count} session | {count} sessions",
+    "minutes": "min",
+    "seconds": "sec",
+    "session": "Session",
     "nextSession": "Next: {type}",
     "focusTime": "Focus Time",
-    "breakTime": "Break Time"
+    "breakTime": "Break Time",
+    "modeSelector": "Mode Selector"
   },
   "settings": {
     "title": "Settings",

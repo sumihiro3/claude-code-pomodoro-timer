@@ -55,6 +55,9 @@
 - Use kebab-case for component names and file names
 - Use PascalCase for component imports
 
+### Development Practices
+- Run typecheck and lint after completing tasks and be sure they ALWAYS pass.
+
 ### Component Structure
 ```vue
 <template>

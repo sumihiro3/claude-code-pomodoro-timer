@@ -5,7 +5,10 @@ export default defineNuxtConfig({
   srcDir: 'src/',
   
   // CSS Framework
-  css: ['vuetify/lib/styles/main.sass'],
+  css: [
+    'vuetify/lib/styles/main.sass',
+    '@mdi/font/css/materialdesignicons.css'
+  ],
   
   // Build configuration
   build: {
@@ -53,6 +56,9 @@ export default defineNuxtConfig({
   vite: {
     define: {
       'process.env.DEBUG': false
+    },
+    ssr: {
+      noExternal: ['vuetify']
     }
   },
   

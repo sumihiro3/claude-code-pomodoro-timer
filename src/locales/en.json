@@ -1,0 +1,94 @@
+{
+  "timer": {
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Resume",
+    "stop": "Stop",
+    "reset": "Reset",
+    "workSession": "Work Session",
+    "shortBreak": "Short Break",
+    "longBreak": "Long Break",
+    "timeRemaining": "Time Remaining: {time}",
+    "sessionComplete": "Session Complete!",
+    "pomodoroTimer": "Pomodoro Timer",
+    "minutes": "{count} minute | {count} minutes",
+    "seconds": "{count} second | {count} seconds",
+    "session": "{count} session | {count} sessions",
+    "nextSession": "Next: {type}",
+    "focusTime": "Focus Time",
+    "breakTime": "Break Time"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "notifications": "Notifications",
+    "workDuration": "Work Duration (minutes)",
+    "shortBreakDuration": "Short Break Duration (minutes)",
+    "longBreakDuration": "Long Break Duration (minutes)",
+    "sessionsBeforeLongBreak": "Sessions Before Long Break",
+    "autoStartNextSession": "Auto Start Next Session",
+    "visualNotifications": "Visual Notifications",
+    "audioNotifications": "Audio Notifications",
+    "notificationSound": "Notification Sound",
+    "save": "Save Settings",
+    "reset": "Reset to Default",
+    "themes": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "sounds": {
+      "bell": "Bell",
+      "chime": "Chime",
+      "ding": "Ding",
+      "none": "None"
+    }
+  },
+  "history": {
+    "title": "History",
+    "totalSessions": "Total Sessions",
+    "completedSessions": "Completed Sessions",
+    "totalWorkTime": "Total Work Time",
+    "streakDays": "Streak Days",
+    "today": "Today",
+    "thisWeek": "This Week",
+    "thisMonth": "This Month",
+    "allTime": "All Time",
+    "noData": "No session data available",
+    "export": "Export Data",
+    "clear": "Clear History",
+    "clearConfirm": "Are you sure you want to clear all history?",
+    "sessionDetails": "Session Details",
+    "completed": "Completed",
+    "interrupted": "Interrupted",
+    "duration": "Duration",
+    "startTime": "Start Time",
+    "endTime": "End Time"
+  },
+  "navigation": {
+    "timer": "Timer",
+    "history": "History",
+    "settings": "Settings"
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Info"
+  },
+  "notifications": {
+    "workSessionComplete": "Work session complete! Time for a break.",
+    "breakComplete": "Break time is over! Ready to focus?",
+    "longBreakEarned": "Great job! You've earned a long break.",
+    "settingsSaved": "Settings saved successfully",
+    "historyCleared": "History cleared successfully",
+    "dataExported": "Data exported successfully"
+  }
+}

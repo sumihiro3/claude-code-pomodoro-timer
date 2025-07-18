@@ -1,0 +1,94 @@
+{
+  "timer": {
+    "start": "시작",
+    "pause": "일시정지",
+    "resume": "재개",
+    "stop": "중지",
+    "reset": "재설정",
+    "workSession": "작업 세션",
+    "shortBreak": "짧은 휴식",
+    "longBreak": "긴 휴식",
+    "timeRemaining": "남은 시간: {time}",
+    "sessionComplete": "세션 완료!",
+    "pomodoroTimer": "포모도로 타이머",
+    "minutes": "{count}분",
+    "seconds": "{count}초",
+    "session": "{count}세션",
+    "nextSession": "다음: {type}",
+    "focusTime": "집중 시간",
+    "breakTime": "휴식 시간"
+  },
+  "settings": {
+    "title": "설정",
+    "language": "언어",
+    "theme": "테마",
+    "notifications": "알림",
+    "workDuration": "작업 시간 (분)",
+    "shortBreakDuration": "짧은 휴식 시간 (분)",
+    "longBreakDuration": "긴 휴식 시간 (분)",
+    "sessionsBeforeLongBreak": "긴 휴식 전 세션 수",
+    "autoStartNextSession": "다음 세션 자동 시작",
+    "visualNotifications": "시각적 알림",
+    "audioNotifications": "오디오 알림",
+    "notificationSound": "알림 소리",
+    "save": "설정 저장",
+    "reset": "기본값으로 재설정",
+    "themes": {
+      "light": "밝은 테마",
+      "dark": "어두운 테마",
+      "system": "시스템"
+    },
+    "sounds": {
+      "bell": "벨",
+      "chime": "차임",
+      "ding": "딩",
+      "none": "없음"
+    }
+  },
+  "history": {
+    "title": "기록",
+    "totalSessions": "총 세션",
+    "completedSessions": "완료된 세션",
+    "totalWorkTime": "총 작업 시간",
+    "streakDays": "연속 일수",
+    "today": "오늘",
+    "thisWeek": "이번 주",
+    "thisMonth": "이번 달",
+    "allTime": "전체 기간",
+    "noData": "세션 데이터가 없습니다",
+    "export": "데이터 내보내기",
+    "clear": "기록 지우기",
+    "clearConfirm": "정말로 모든 기록을 지우시겠습니까?",
+    "sessionDetails": "세션 상세정보",
+    "completed": "완료됨",
+    "interrupted": "중단됨",
+    "duration": "지속 시간",
+    "startTime": "시작 시간",
+    "endTime": "종료 시간"
+  },
+  "navigation": {
+    "timer": "타이머",
+    "history": "기록",
+    "settings": "설정"
+  },
+  "common": {
+    "yes": "예",
+    "no": "아니오",
+    "cancel": "취소",
+    "confirm": "확인",
+    "close": "닫기",
+    "loading": "로딩 중...",
+    "error": "오류",
+    "success": "성공",
+    "warning": "경고",
+    "info": "정보"
+  },
+  "notifications": {
+    "workSessionComplete": "작업 세션이 완료되었습니다! 휴식 시간입니다.",
+    "breakComplete": "휴식 시간이 끝났습니다! 집중할 준비가 되셨나요?",
+    "longBreakEarned": "훌륭한 작업입니다! 긴 휴식을 가져보세요.",
+    "settingsSaved": "설정이 성공적으로 저장되었습니다",
+    "historyCleared": "기록이 성공적으로 지워졌습니다",
+    "dataExported": "데이터가 성공적으로 내보내졌습니다"
+  }
+}

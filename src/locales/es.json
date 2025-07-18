@@ -1,0 +1,94 @@
+{
+  "timer": {
+    "start": "Iniciar",
+    "pause": "Pausar",
+    "resume": "Reanudar",
+    "stop": "Detener",
+    "reset": "Reiniciar",
+    "workSession": "Sesión de Trabajo",
+    "shortBreak": "Descanso Corto",
+    "longBreak": "Descanso Largo",
+    "timeRemaining": "Tiempo Restante: {time}",
+    "sessionComplete": "¡Sesión Completa!",
+    "pomodoroTimer": "Temporizador Pomodoro",
+    "minutes": "{count} minuto | {count} minutos",
+    "seconds": "{count} segundo | {count} segundos",
+    "session": "{count} sesión | {count} sesiones",
+    "nextSession": "Siguiente: {type}",
+    "focusTime": "Tiempo de Enfoque",
+    "breakTime": "Tiempo de Descanso"
+  },
+  "settings": {
+    "title": "Configuración",
+    "language": "Idioma",
+    "theme": "Tema",
+    "notifications": "Notificaciones",
+    "workDuration": "Duración del Trabajo (minutos)",
+    "shortBreakDuration": "Duración del Descanso Corto (minutos)",
+    "longBreakDuration": "Duración del Descanso Largo (minutos)",
+    "sessionsBeforeLongBreak": "Sesiones Antes del Descanso Largo",
+    "autoStartNextSession": "Iniciar Automáticamente la Siguiente Sesión",
+    "visualNotifications": "Notificaciones Visuales",
+    "audioNotifications": "Notificaciones de Audio",
+    "notificationSound": "Sonido de Notificación",
+    "save": "Guardar Configuración",
+    "reset": "Restablecer por Defecto",
+    "themes": {
+      "light": "Claro",
+      "dark": "Oscuro",
+      "system": "Sistema"
+    },
+    "sounds": {
+      "bell": "Campana",
+      "chime": "Campanilla",
+      "ding": "Ding",
+      "none": "Ninguno"
+    }
+  },
+  "history": {
+    "title": "Historial",
+    "totalSessions": "Sesiones Totales",
+    "completedSessions": "Sesiones Completadas",
+    "totalWorkTime": "Tiempo Total de Trabajo",
+    "streakDays": "Días Consecutivos",
+    "today": "Hoy",
+    "thisWeek": "Esta Semana",
+    "thisMonth": "Este Mes",
+    "allTime": "Todo el Tiempo",
+    "noData": "No hay datos de sesión disponibles",
+    "export": "Exportar Datos",
+    "clear": "Limpiar Historial",
+    "clearConfirm": "¿Estás seguro de que quieres limpiar todo el historial?",
+    "sessionDetails": "Detalles de la Sesión",
+    "completed": "Completado",
+    "interrupted": "Interrumpido",
+    "duration": "Duración",
+    "startTime": "Hora de Inicio",
+    "endTime": "Hora de Fin"
+  },
+  "navigation": {
+    "timer": "Temporizador",
+    "history": "Historial",
+    "settings": "Configuración"
+  },
+  "common": {
+    "yes": "Sí",
+    "no": "No",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "close": "Cerrar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "warning": "Advertencia",
+    "info": "Información"
+  },
+  "notifications": {
+    "workSessionComplete": "¡Sesión de trabajo completa! Es hora de descansar.",
+    "breakComplete": "¡El tiempo de descanso ha terminado! ¿Listo para enfocarte?",
+    "longBreakEarned": "¡Buen trabajo! Te has ganado un descanso largo.",
+    "settingsSaved": "Configuración guardada exitosamente",
+    "historyCleared": "Historial limpiado exitosamente",
+    "dataExported": "Datos exportados exitosamente"
+  }
+}

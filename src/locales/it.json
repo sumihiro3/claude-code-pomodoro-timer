@@ -1,0 +1,94 @@
+{
+  "timer": {
+    "start": "Avvia",
+    "pause": "Pausa",
+    "resume": "Riprendi",
+    "stop": "Ferma",
+    "reset": "Ripristina",
+    "workSession": "Sessione di Lavoro",
+    "shortBreak": "Pausa Breve",
+    "longBreak": "Pausa Lunga",
+    "timeRemaining": "Tempo Rimanente: {time}",
+    "sessionComplete": "Sessione Completata!",
+    "pomodoroTimer": "Timer Pomodoro",
+    "minutes": "{count} minuto | {count} minuti",
+    "seconds": "{count} secondo | {count} secondi",
+    "session": "{count} sessione | {count} sessioni",
+    "nextSession": "Prossima: {type}",
+    "focusTime": "Tempo di Concentrazione",
+    "breakTime": "Tempo di Pausa"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "language": "Lingua",
+    "theme": "Tema",
+    "notifications": "Notifiche",
+    "workDuration": "Durata del Lavoro (minuti)",
+    "shortBreakDuration": "Durata Pausa Breve (minuti)",
+    "longBreakDuration": "Durata Pausa Lunga (minuti)",
+    "sessionsBeforeLongBreak": "Sessioni Prima della Pausa Lunga",
+    "autoStartNextSession": "Avvia Automaticamente la Sessione Successiva",
+    "visualNotifications": "Notifiche Visive",
+    "audioNotifications": "Notifiche Audio",
+    "notificationSound": "Suono di Notifica",
+    "save": "Salva Impostazioni",
+    "reset": "Ripristina Predefinito",
+    "themes": {
+      "light": "Chiaro",
+      "dark": "Scuro",
+      "system": "Sistema"
+    },
+    "sounds": {
+      "bell": "Campana",
+      "chime": "Carillon",
+      "ding": "Ding",
+      "none": "Nessuno"
+    }
+  },
+  "history": {
+    "title": "Cronologia",
+    "totalSessions": "Sessioni Totali",
+    "completedSessions": "Sessioni Completate",
+    "totalWorkTime": "Tempo di Lavoro Totale",
+    "streakDays": "Giorni Consecutivi",
+    "today": "Oggi",
+    "thisWeek": "Questa Settimana",
+    "thisMonth": "Questo Mese",
+    "allTime": "Tutto il Tempo",
+    "noData": "Nessun dato di sessione disponibile",
+    "export": "Esporta Dati",
+    "clear": "Cancella Cronologia",
+    "clearConfirm": "Sei sicuro di voler cancellare tutta la cronologia?",
+    "sessionDetails": "Dettagli della Sessione",
+    "completed": "Completato",
+    "interrupted": "Interrotto",
+    "duration": "Durata",
+    "startTime": "Ora di Inizio",
+    "endTime": "Ora di Fine"
+  },
+  "navigation": {
+    "timer": "Timer",
+    "history": "Cronologia",
+    "settings": "Impostazioni"
+  },
+  "common": {
+    "yes": "Sì",
+    "no": "No",
+    "cancel": "Annulla",
+    "confirm": "Conferma",
+    "close": "Chiudi",
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "success": "Successo",
+    "warning": "Avviso",
+    "info": "Informazione"
+  },
+  "notifications": {
+    "workSessionComplete": "Sessione di lavoro completata! È ora di una pausa.",
+    "breakComplete": "La pausa è finita! Pronto a concentrarti?",
+    "longBreakEarned": "Ottimo lavoro! Ti sei guadagnato una pausa lunga.",
+    "settingsSaved": "Impostazioni salvate con successo",
+    "historyCleared": "Cronologia cancellata con successo",
+    "dataExported": "Dati esportati con successo"
+  }
+}

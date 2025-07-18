@@ -1,0 +1,94 @@
+{
+  "timer": {
+    "start": "Starten",
+    "pause": "Pause",
+    "resume": "Fortsetzen",
+    "stop": "Stoppen",
+    "reset": "Zurücksetzen",
+    "workSession": "Arbeitsitzung",
+    "shortBreak": "Kurze Pause",
+    "longBreak": "Lange Pause",
+    "timeRemaining": "Verbleibende Zeit: {time}",
+    "sessionComplete": "Sitzung Abgeschlossen!",
+    "pomodoroTimer": "Pomodoro-Timer",
+    "minutes": "{count} Minute | {count} Minuten",
+    "seconds": "{count} Sekunde | {count} Sekunden",
+    "session": "{count} Sitzung | {count} Sitzungen",
+    "nextSession": "Nächste: {type}",
+    "focusTime": "Fokuszeit",
+    "breakTime": "Pausenzeit"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "language": "Sprache",
+    "theme": "Thema",
+    "notifications": "Benachrichtigungen",
+    "workDuration": "Arbeitsdauer (Minuten)",
+    "shortBreakDuration": "Kurze Pausendauer (Minuten)",
+    "longBreakDuration": "Lange Pausendauer (Minuten)",
+    "sessionsBeforeLongBreak": "Sitzungen vor langer Pause",
+    "autoStartNextSession": "Nächste Sitzung automatisch starten",
+    "visualNotifications": "Visuelle Benachrichtigungen",
+    "audioNotifications": "Audio-Benachrichtigungen",
+    "notificationSound": "Benachrichtigungston",
+    "save": "Einstellungen speichern",
+    "reset": "Auf Standard zurücksetzen",
+    "themes": {
+      "light": "Hell",
+      "dark": "Dunkel",
+      "system": "System"
+    },
+    "sounds": {
+      "bell": "Glocke",
+      "chime": "Glockenspiel",
+      "ding": "Ding",
+      "none": "Keine"
+    }
+  },
+  "history": {
+    "title": "Verlauf",
+    "totalSessions": "Gesamte Sitzungen",
+    "completedSessions": "Abgeschlossene Sitzungen",
+    "totalWorkTime": "Gesamte Arbeitszeit",
+    "streakDays": "Aufeinanderfolgende Tage",
+    "today": "Heute",
+    "thisWeek": "Diese Woche",
+    "thisMonth": "Dieser Monat",
+    "allTime": "Alle Zeit",
+    "noData": "Keine Sitzungsdaten verfügbar",
+    "export": "Daten exportieren",
+    "clear": "Verlauf löschen",
+    "clearConfirm": "Sind Sie sicher, dass Sie den gesamten Verlauf löschen möchten?",
+    "sessionDetails": "Sitzungsdetails",
+    "completed": "Abgeschlossen",
+    "interrupted": "Unterbrochen",
+    "duration": "Dauer",
+    "startTime": "Startzeit",
+    "endTime": "Endzeit"
+  },
+  "navigation": {
+    "timer": "Timer",
+    "history": "Verlauf",
+    "settings": "Einstellungen"
+  },
+  "common": {
+    "yes": "Ja",
+    "no": "Nein",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "close": "Schließen",
+    "loading": "Wird geladen...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "warning": "Warnung",
+    "info": "Information"
+  },
+  "notifications": {
+    "workSessionComplete": "Arbeitssitzung abgeschlossen! Zeit für eine Pause.",
+    "breakComplete": "Pause ist vorbei! Bereit zum Fokussieren?",
+    "longBreakEarned": "Großartige Arbeit! Sie haben sich eine lange Pause verdient.",
+    "settingsSaved": "Einstellungen erfolgreich gespeichert",
+    "historyCleared": "Verlauf erfolgreich gelöscht",
+    "dataExported": "Daten erfolgreich exportiert"
+  }
+}

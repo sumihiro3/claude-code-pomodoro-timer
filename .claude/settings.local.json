@@ -3,7 +3,10 @@
     "allow": [
       "WebFetch(domain:docs.anthropic.com)",
       "Bash(mkdir:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(ls:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run typecheck:*)"
     ],
     "deny": []
   }

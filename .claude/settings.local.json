@@ -1,4 +1,8 @@
 {
+  "env": {
+    "BASH_DEFAULT_TIMEOUT_MS": "1800000",
+    "BASH_MAX_TIMEOUT_MS": "1800000"
+  },
   "permissions": {
     "allow": [
       "WebFetch(domain:docs.anthropic.com)",
@@ -14,7 +18,15 @@
       "Bash(cat:*)",
       "Bash(find:*)",
       "Bash(gh issue create:*)",
-      "Bash(gh issue close:*)"
+      "Bash(gh issue close:*)",
+      "Bash(git checkout:*)",
+      "Bash(yarn test)",
+      "Bash(yarn lint)",
+      "Bash(yarn lint:*)",
+      "Bash(yarn typecheck)",
+      "Bash(yarn build)",
+      "Bash(yarn test:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }

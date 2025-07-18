@@ -10,6 +10,7 @@ echo "共有volumesを設定しています..."
 
 # 共有volumesのリスト
 VOLUMES=(
+    "try-node-node_modules"
     "claude-code-bashhistory"
     "claude-code-config"
     "gh-config"

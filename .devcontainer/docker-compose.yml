@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   dev:
     platform: linux/x86_64
@@ -10,6 +9,7 @@ services:
       dockerfile: .devcontainer/Dockerfile
     volumes:
       - ../.:/workspace:cached
+      - try-node-node_modules:/workspace/node_modules
       - claude-code-bashhistory:/commandhistory
       - claude-code-config:/home/node/.claude
       - gh-config:/home/node/.config/gh
@@ -18,6 +18,8 @@ services:
 volumes:
   # 共有volumeは自分のユースケースにあったものに変更しましょう
   # ホストマシンからsetup-shared-volumes.shを実行して作成すればひとまず動きます
+  try-node-node_modules:
+    external: true
   claude-code-bashhistory:
     external: true
   claude-code-config:

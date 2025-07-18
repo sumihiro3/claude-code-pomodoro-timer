@@ -32,6 +32,7 @@
   },
   "remoteUser": "node",
   "mounts": [
+    "source=try-node-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
     "source=claude-code-bashhistory,target=/commandhistory,type=volume",
     "source=claude-code-config,target=/home/node/.claude,type=volume",
     "source=gh-config,target=/home/node/.config/gh,type=volume"

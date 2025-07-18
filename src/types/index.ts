@@ -45,3 +45,18 @@ export interface TimerState {
 export type SessionType = 'work' | 'shortBreak' | 'longBreak';
 export type ThemeMode = 'light' | 'dark' | 'system';
 export type NotificationSound = 'bell' | 'chime' | 'ding' | 'none';
+
+export class DefaultPomodoroSettings implements PomodoroSettings {
+  workDuration: number = 2;
+  shortBreakDuration: number = 1;
+  longBreakDuration: number = 15;
+  sessionsBeforeLongBreak: number = 4;
+  autoStartNextSession: boolean = false;
+  notifications = {
+    visual: true,
+    audio: true,
+    sound: 'bell'
+  };
+  theme: ThemeMode = 'system';
+  language: string = 'ja';
+}

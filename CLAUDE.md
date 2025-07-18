@@ -34,14 +34,15 @@
 ```
 
 ## Key Commands
-- `npm run dev`: Start development server
-- `npm run build`: Build for production
-- `npm run generate`: Generate static site for Cloudflare Pages
-- `npm run test`: Run unit tests with Vitest
-- `npm run test:e2e`: Run Playwright e2e tests
-- `npm run lint`: Run ESLint
-- `npm run typecheck`: Run TypeScript type checking
-- `npm run preview`: Preview production build locally
+- `yarn dev`: Start development server
+- `yarn build`: Build for production
+- `yarn generate`: Generate static site for Cloudflare Pages
+- `yarn test`: Run unit tests with Vitest
+- `yarn test:e2e`: Run Playwright e2e tests
+- `yarn lint`: Run ESLint
+- `yarn typecheck`: Run TypeScript type checking
+- `yarn preview`: Preview production build locally
+- `yarn install`: Install all dependencies
 
 ## Development Guidelines
 

@@ -7,6 +7,8 @@ services:
     build:
       context: ../.
       dockerfile: .devcontainer/Dockerfile
+    ports:
+      - "3000:3000"
     volumes:
       - ../.:/workspace:cached
       - try-node-node_modules:/workspace/node_modules

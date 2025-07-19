@@ -82,25 +82,47 @@ v-card
 </template>
 
 <script setup lang="ts">
+/**
+ * タイマーモード選択コンポーネント
+ * 作業・短い休憩・長い休憩の3つのモードを選択できるラジオボタングループ
+ * アクセシビリティとキーボード操作に対応し、各モードの時間とカラーを表示
+ */
 import type { SessionType } from '~/types'
 
+/**
+ * コンポーネントのProp型定義
+ */
 interface Props {
+  /** 現在選択されているモード */
   currentMode: SessionType
+  /** 作業セッションの時間（分） */
   workDuration: number
+  /** 短い休憩の時間（分） */
   shortBreakDuration: number
+  /** 長い休憩の時間（分） */
   longBreakDuration: number
+  /** 作業モードのテーマカラー */
   workColor?: string
+  /** 短い休憩モードのテーマカラー */
   shortBreakColor?: string
+  /** 長い休憩モードのテーマカラー */
   longBreakColor?: string
 }
 
+/**
+ * Propsのデフォルト値を設定
+ */
 withDefaults(defineProps<Props>(), {
-  workColor: '#1976d2',
-  shortBreakColor: '#388e3c',
-  longBreakColor: '#f57c00'
+  workColor: '#1976d2',      // デフォルト: ブルー
+  shortBreakColor: '#388e3c', // デフォルト: グリーン
+  longBreakColor: '#f57c00'   // デフォルト: オレンジ
 })
 
+/**
+ * コンポーネントが発行するイベントの型定義
+ */
 defineEmits<{
+  /** モードが変更されたときのイベント */
   modeChange: [mode: SessionType]
 }>()
 </script>

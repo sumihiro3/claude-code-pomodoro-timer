@@ -40,16 +40,33 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * タイマーのコントロールボタンコンポーネント
+ * 開始・一時停止・リセットボタンを提供し、アクセシビリティとキーボード操作に対応
+ */
+
+/**
+ * コンポーネントのProp型定義
+ */
 interface Props {
+  /** タイマーが動作中かどうか（ボタン表示切り替え用） */
   isRunning: boolean
+  /** コントロールボタンを無効化するかどうか */
   disabled?: boolean
 }
 
+// Propsを定義
 defineProps<Props>()
 
+/**
+ * コンポーネントが発行するイベントの型定義
+ */
 defineEmits<{
+  /** タイマー開始イベント */
   start: []
+  /** タイマー一時停止イベント */
   pause: []
+  /** タイマーリセットイベント */
   reset: []
 }>()
 </script>

@@ -7,13 +7,27 @@ import type {
   SessionType 
 } from '~/types'
 
+/**
+ * ポモドーロタイマーのグローバル状態管理ストア
+ * セッションの実行状態、履歴データ、統計情報を一元管理
+ * Piniaを使用したコンポジションAPIベースのストア
+ */
 export const useTimerStore = defineStore('timer', () => {
+  // タイマーの基本状態
+  
+  /** 現在実行中のセッション */
   const currentSession = ref<PomodoroSession | null>(null)
+  /** タイマーが動作中かどうか */
   const isRunning = ref(false)
+  /** タイマーが一時停止中かどうか */
   const isPaused = ref(false)
+  /** 残り時間（秒） */
   const remainingTime = ref(0)
+  /** 現在のセッションタイプ */
   const currentSessionType = ref<SessionType>('work')
+  /** 完了したセッション数 */
   const sessionsCompleted = ref(0)
+  /** セッション履歴と統計データ */
   const history = ref<PomodoroHistory>({
     sessions: [],
     stats: {
@@ -24,6 +38,10 @@ export const useTimerStore = defineStore('timer', () => {
     }
   })
 
+  /**
+   * タイマーの現在状態を統合したオブジェクト
+   * @returns タイマーの全状態を含むTimerStateオブジェクト
+   */
   const timerState = computed<TimerState>(() => ({
     currentSession: currentSession.value,
     isRunning: isRunning.value,
@@ -33,6 +51,10 @@ export const useTimerStore = defineStore('timer', () => {
     sessionsCompleted: sessionsCompleted.value
   }))
 
+  /**
+   * 新しいセッションを開始する
+   * @param session - 開始するセッションの情報
+   */
   const startSession = (session: PomodoroSession) => {
     currentSession.value = session
     isRunning.value = true
@@ -41,16 +63,25 @@ export const useTimerStore = defineStore('timer', () => {
     currentSessionType.value = session.type
   }
 
+  /**
+   * 現在のセッションを一時停止する
+   */
   const pauseSession = () => {
     isPaused.value = true
     isRunning.value = false
   }
 
+  /**
+   * 一時停止中のセッションを再開する
+   */
   const resumeSession = () => {
     isPaused.value = false
     isRunning.value = true
   }
 
+  /**
+   * 現在のセッションを停止し、中断として履歴に記録する
+   */
   const stopSession = () => {
     if (currentSession.value) {
       currentSession.value.interrupted = true
@@ -60,6 +91,9 @@ export const useTimerStore = defineStore('timer', () => {
     resetTimer()
   }
 
+  /**
+   * 現在のセッションを完了し、統計を更新して履歴に記録する
+   */
   const completeSession = () => {
     if (currentSession.value) {
       currentSession.value.completed = true
@@ -75,6 +109,9 @@ export const useTimerStore = defineStore('timer', () => {
     resetTimer()
   }
 
+  /**
+   * タイマーを初期状態にリセットする
+   */
   const resetTimer = () => {
     currentSession.value = null
     isRunning.value = false
@@ -82,12 +119,20 @@ export const useTimerStore = defineStore('timer', () => {
     remainingTime.value = 0
   }
 
+  /**
+   * セッションを履歴に追加し、統計を更新してストレージに保存する
+   * @param session - 履歴に追加するセッション
+   */
   const addSessionToHistory = (session: PomodoroSession) => {
     history.value.sessions.push(session)
     history.value.stats.totalSessions++
     saveHistoryToStorage()
   }
 
+  /**
+   * ローカルストレージから履歴データを読み込む
+   * クライアントサイドでのみ実行し、エラーハンドリングを含む
+   */
   const loadHistoryFromStorage = () => {
     if (import.meta.client) {
       try {
@@ -102,6 +147,10 @@ export const useTimerStore = defineStore('timer', () => {
     }
   }
 
+  /**
+   * 現在の履歴データをローカルストレージに保存する
+   * クライアントサイドでのみ実行し、エラーハンドリングを含む
+   */
   const saveHistoryToStorage = () => {
     if (import.meta.client) {
       try {
@@ -112,6 +161,9 @@ export const useTimerStore = defineStore('timer', () => {
     }
   }
 
+  /**
+   * 履歴データを全てクリアし、統計をリセットする
+   */
   const clearHistory = () => {
     history.value = {
       sessions: [],
@@ -125,6 +177,10 @@ export const useTimerStore = defineStore('timer', () => {
     saveHistoryToStorage()
   }
 
+  /**
+   * 今日のセッション一覧を取得する
+   * @returns 今日実行されたセッションの配列
+   */
   const getTodaysSessions = () => {
     const today = new Date().toDateString()
     return history.value.sessions.filter(session => 
@@ -132,6 +188,10 @@ export const useTimerStore = defineStore('timer', () => {
     )
   }
 
+  /**
+   * 過去1週間のセッション統計を取得する
+   * @returns 過去7日間のセッションの配列
+   */
   const getWeeklyStats = () => {
     const weekAgo = new Date()
     weekAgo.setDate(weekAgo.getDate() - 7)
@@ -141,6 +201,7 @@ export const useTimerStore = defineStore('timer', () => {
     )
   }
 
+  // 初期化時に履歴データを読み込み
   loadHistoryFromStorage()
 
   return {

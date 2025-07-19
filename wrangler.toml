@@ -31,11 +31,3 @@ ENVIRONMENT = "develop"
 # ビルド設定
 [build]
 command = "yarn build"
-
-# デプロイメント設定
-[deployment]
-compatibility_date = "2025-07-15"
-
-# Node.js互換性設定
-[nodejs_compat]
-enabled = true

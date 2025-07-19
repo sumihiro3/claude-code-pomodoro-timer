@@ -292,3 +292,10 @@ interface PomodoroHistory {
 ## Future Enhancements
 - Browser extension version
 - Additional language support based on user feedback
+
+## Known Issues and Workarounds
+
+### Test Runner Behavior
+- When running tests, you might encounter a prompt `press h to show help, press q to quit`. 
+  - To avoid this, you can modify the test script in `package.json` to run tests in non-interactive mode
+  - Add the `--run` flag to Vitest command to prevent interactive mode

@@ -1,4 +1,8 @@
 {
+  "app": {
+    "title": "Pomodoro Timer",
+    "subtitle": "Focus and boost your productivity with the Pomodoro Technique"
+  },
   "timer": {
     "start": "Start",
     "pause": "Pause",
@@ -11,12 +15,30 @@
     "timeRemaining": "Time Remaining: {time}",
     "sessionComplete": "Session Complete!",
     "pomodoroTimer": "Pomodoro Timer",
-    "minutes": "{count} minute | {count} minutes",
-    "seconds": "{count} second | {count} seconds",
-    "session": "{count} session | {count} sessions",
+    "minutes": "min",
+    "seconds": "sec",
+    "session": "Session",
     "nextSession": "Next: {type}",
     "focusTime": "Focus Time",
-    "breakTime": "Break Time"
+    "breakTime": "Break Time",
+    "modeSelector": "Mode Selector",
+    "timerRegion": "Pomodoro Timer Controls",
+    "modeEmoji": "{mode} mode indicator",
+    "progressLabel": "{progress}% complete",
+    "controls": "Timer Controls",
+    "startTimer": "Start the timer",
+    "pauseTimer": "Pause the timer",
+    "resetTimer": "Reset the timer",
+    "selectTimerMode": "Select timer mode",
+    "selectWorkMode": "Select work mode ({duration} minutes)",
+    "selectShortBreakMode": "Select short break mode ({duration} minutes)",
+    "selectLongBreakMode": "Select long break mode ({duration} minutes)",
+    "workModeIndicator": "Work mode color indicator",
+    "shortBreakModeIndicator": "Short break mode color indicator",
+    "longBreakModeIndicator": "Long break mode color indicator",
+    "workIcon": "Work briefcase icon",
+    "coffeeIcon": "Coffee break icon",
+    "beachIcon": "Beach vacation icon"
   },
   "settings": {
     "title": "Settings",

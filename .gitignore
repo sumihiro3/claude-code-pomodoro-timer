@@ -24,3 +24,7 @@ logs
 !.env.example
 
 tmp/
+
+# Reviews
+reviews/*
+!reviews/.gitkeep

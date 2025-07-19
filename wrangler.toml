@@ -19,7 +19,7 @@ name = "pomodoro-timer-develop"
 
 # アセット設定（Cloudflare Pages連携）
 [site]
-bucket = ".output/public"
+bucket = "dist"
 
 # 環境変数設定（実際の値はGitHub Secretsで管理）
 [vars]

@@ -59,7 +59,7 @@ jobs:
 
   # デプロイジョブ（テスト成功時のみ実行）
   deploy:
-    name: Deploy to Cloudflare Workers (Development)
+    name: Deploy to Cloudflare Workers (Develop)
     runs-on: ubuntu-latest
     needs: test
     if: github.ref == 'refs/heads/develop'
@@ -95,8 +95,8 @@ jobs:
       # デプロイ結果通知
       - name: Notify deployment success
         if: success()
-        run: echo "✅ Development environment deployment successful!"
+        run: echo "✅ Develop environment deployment successful!"
       
       - name: Notify deployment failure
         if: failure()
-        run: echo "❌ Development environment deployment failed!"
+        run: echo "❌ Develop environment deployment failed!"

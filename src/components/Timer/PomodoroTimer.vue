@@ -53,6 +53,10 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * ポモドーロタイマーのメインコンポーネント
+ * 円形プログレスバー、タイマーコントロール、モード選択を統合したポモドーロタイマーUI
+ */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import CircularProgress from './CircularProgress.vue'
 import TimerControls from './TimerControls.vue'
@@ -60,30 +64,37 @@ import ModeSelector from './ModeSelector.vue'
 import { useTimer } from '~/composables/useTimer'
 import { useTimerSettings } from '~/composables/useTimerSettings'
 
+// タイマー設定を取得
 const { workDuration, shortBreakDuration, longBreakDuration } = useTimerSettings()
 
+// タイマーの状態と操作関数を取得
 const {
-  currentMode,
-  isRunning,
-  sessionsCompleted,
-  progress,
-  formattedTime,
-  getModeLabel,
-  getModeEmoji,
-  start,
-  pause,
-  reset,
-  switchMode
+  currentMode,       // 現在のモード（作業・休憩）
+  isRunning,         // タイマー動作状態
+  sessionsCompleted, // 完了セッション数
+  progress,          // 進捗率（0-100%）
+  formattedTime,     // フォーマット済み時間表示
+  getModeLabel,      // モードラベル取得関数
+  getModeEmoji,      // モード絵文字取得関数
+  start,             // タイマー開始関数
+  pause,             // タイマー一時停止関数
+  reset,             // タイマーリセット関数
+  switchMode         // モード切り替え関数
 } = useTimer(
   workDuration.value,
   shortBreakDuration.value,
   longBreakDuration.value
 )
 
-const workColor = '#1976d2'
-const shortBreakColor = '#388e3c'
-const longBreakColor = '#f57c00'
+// 各モードに対応するテーマカラー
+const workColor = '#1976d2'        // 作業モード: ブルー
+const shortBreakColor = '#388e3c'  // 短い休憩: グリーン
+const longBreakColor = '#f57c00'   // 長い休憩: オレンジ
 
+/**
+ * 現在のモードに応じたテーマカラーを取得する
+ * @returns 現在のモードに対応するカラーコード
+ */
 const getCurrentModeColor = () => {
   switch (currentMode.value) {
     case 'work':

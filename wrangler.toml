@@ -9,8 +9,8 @@ compatibility_flags = ["nodejs_compat"]
 
 # 本番環境設定（mainブランチ）
 [env.production]
-name = "pomodoro-timer"
-# workers.devサブドメインを使用: pomodoro-timer.your-account.workers.dev
+name = "pomodoro-timer-production"
+# workers.devサブドメインを使用: pomodoro-timer-production.your-account.workers.dev
 
 # 開発環境設定（developブランチ）
 [env.develop] 

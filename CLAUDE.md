@@ -57,6 +57,159 @@
 - Use kebab-case for component names and file names
 - Use PascalCase for component imports
 
+### JSDoc Documentation Guidelines
+- **All functions, methods, classes, and interfaces MUST have JSDoc comments in Japanese**
+- Use consistent JSDoc formatting with proper `@param` and `@returns` tags
+- Document the purpose, parameters, return values, and any important side effects
+- Include meaningful examples for complex functions when necessary
+
+#### TypeScript Functions and Methods
+```typescript
+/**
+ * ポモドーロタイマーの状態と操作を管理するcomposable
+ * 作業セッション、短い休憩、長い休憩の時間管理と制御を提供
+ * 
+ * @param workDuration - 作業セッションの時間（分）、デフォルト: 25分
+ * @param shortBreakDuration - 短い休憩の時間（分）、デフォルト: 5分
+ * @param longBreakDuration - 長い休憩の時間（分）、デフォルト: 15分
+ * @returns タイマーの状態、操作関数、computed値を含むオブジェクト
+ */
+export function useTimer(
+  workDuration: number = 25,
+  shortBreakDuration: number = 5,
+  longBreakDuration: number = 15
+) {
+  // 実装
+}
+
+/**
+ * セッション時間の妥当性を検証する
+ * @param duration - 検証対象の時間（秒）
+ * @returns 時間が有効範囲内（1秒〜2時間）で整数の場合true
+ */
+const validateDuration = (duration: number): boolean => {
+  return duration > 0 && duration <= 7200 && Number.isInteger(duration)
+}
+```
+
+#### Interface and Type Definitions
+```typescript
+/**
+ * ポモドーロタイマーの設定項目スキーマ
+ * 作業時間、休憩時間、通知設定、テーマなどの全設定を定義
+ */
+export const PomodoroSettingsSchema = z.object({
+  // 実装
+});
+
+/**
+ * タイマーエラーの型定義
+ * バリデーションエラー、タイマー競合状態、セッション作成失敗を表現
+ */
+interface TimerError {
+  /** エラーの種類 */
+  type: 'invalid_duration' | 'timer_conflict' | 'session_creation_failed';
+  /** エラーメッセージ */
+  message: string;
+  /** 元のエラーオブジェクト（存在する場合） */
+  originalError?: Error;
+}
+```
+
+#### Vue Component Documentation
+```vue
+<script setup lang="ts">
+/**
+ * ポモドーロタイマーのメインコンポーネント
+ * 円形プログレスバー、タイマーコントロール、モード選択を統合したポモドーロタイマーUI
+ */
+
+/**
+ * コンポーネントのProp型定義
+ */
+interface Props {
+  /** 進捗率（0-100の数値） */
+  progress: number
+  /** プログレスバーのサイズ（px） */
+  size?: number
+  /** プログレスバーの線の太さ（px） */
+  strokeWidth?: number
+  /** プログレスバーの色 */
+  color?: string
+}
+
+/**
+ * Propsのデフォルト値を設定
+ */
+withDefaults(defineProps<Props>(), {
+  size: 240,           // デフォルトサイズ: 240px
+  strokeWidth: 12,     // デフォルト線太: 12px
+  color: 'primary'     // デフォルト色: Vuetifyのprimaryカラー
+})
+
+/**
+ * コンポーネントが発行するイベントの型定義
+ */
+defineEmits<{
+  /** タイマー開始イベント */
+  start: []
+  /** タイマー一時停止イベント */
+  pause: []
+  /** タイマーリセットイベント */
+  reset: []
+}>()
+</script>
+```
+
+#### Pug Template Comments
+```pug
+template(lang="pug")
+  //- ポモドーロタイマーアプリのメインページ
+  //- アプリケーションタイトル、サブタイトル、メインタイマーコンポーネントを表示
+  v-container
+    v-row(justify="center")
+      v-col(cols="12" md="8" lg="6")
+        //- ページヘッダー部分
+        .page-header
+          //- アプリケーションタイトル
+          h1.text-h3.text-center.mb-2
+            | {{ $t('app.title') }}
+        
+        //- メインタイマーコンポーネント
+        PomodoroTimer
+```
+
+#### Configuration File Documentation
+```typescript
+/**
+ * Nuxt 3フレームワークの設定ファイル
+ * ポモドーロタイマーアプリのビルド、モジュール、多言語化、UIフレームワーク設定
+ * 参考: https://nuxt.com/docs/api/configuration/nuxt-config
+ */
+export default defineNuxtConfig({
+  // 互換性日付（Nuxtの新機能と破壊的変更の基準日）
+  compatibilityDate: '2025-07-15',
+  // 開発ツールを有効化（デバッグ、パフォーマンスモニタリング等）
+  devtools: { enabled: true },
+  
+  /**
+   * ビルド設定
+   * Vuetifyをトランスパイル対象に追加し、ESモジュールをCommonJSに変換
+   */
+  build: {
+    transpile: ['vuetify']
+  }
+})
+```
+
+#### Documentation Quality Standards
+- **Purpose clarity**: 関数やクラスの目的を明確に記述
+- **Parameter details**: 全パラメータの型、意味、デフォルト値を記載
+- **Return value explanation**: 戻り値の型と意味を明確に説明
+- **Side effects**: 重要な副作用や注意点を記載
+- **Usage context**: 適切な使用場面や制約を説明
+- **Error conditions**: 例外やエラーケースを記載
+
 ### Development Practices
 - Run typecheck and lint after completing tasks and be sure they ALWAYS pass.
 

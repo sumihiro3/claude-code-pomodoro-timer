@@ -80,23 +80,23 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       
-      # プロダクションビルド実行
-      - name: Build application
-        run: yarn build
+      # 静的サイト生成実行
+      - name: Generate static site
+        run: yarn generate
       
-      # Cloudflare Workersデプロイ
-      - name: Deploy to Cloudflare Workers
+      # Cloudflare Pagesデプロイ
+      - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --env develop
+          command: pages deploy dist --project-name pomodoro-timer-develop
       
       # デプロイ結果通知
       - name: Notify deployment success
         if: success()
-        run: echo "✅ Develop environment deployment successful!"
+        run: echo "✅ Cloudflare Pages develop environment deployment successful!"
       
       - name: Notify deployment failure
         if: failure()
-        run: echo "❌ Develop environment deployment failed!"
+        run: echo "❌ Cloudflare Pages develop environment deployment failed!"

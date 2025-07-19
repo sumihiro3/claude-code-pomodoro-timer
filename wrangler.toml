@@ -3,7 +3,7 @@
 
 # プロジェクト基本設定
 name = "pomodoro-timer"
-main = ".output/server/index.mjs"
+main = "dist/_worker.js/index.js"
 compatibility_date = "2025-07-15"
 compatibility_flags = ["nodejs_compat"]
 

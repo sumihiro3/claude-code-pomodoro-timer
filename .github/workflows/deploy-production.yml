@@ -50,12 +50,12 @@ jobs:
       - name: Run unit tests
         run: yarn test --run
       
-      # E2Eテスト実行（Playwrightインストール含む）
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
-      
-      - name: Run E2E tests
-        run: yarn test:e2e
+      # E2Eテスト実行（現在未実装のためコメントアウト）
+      # - name: Install Playwright browsers
+      #   run: npx playwright install --with-deps
+      # 
+      # - name: Run E2E tests
+      #   run: yarn test:e2e
 
   # デプロイジョブ（テスト成功時のみ実行）
   deploy:

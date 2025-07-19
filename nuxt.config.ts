@@ -4,11 +4,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: 'src/',
   
-  // CSS Framework
-  css: [
-    'vuetify/lib/styles/main.sass',
-    '@mdi/font/css/materialdesignicons.css'
-  ],
   
   // Build configuration
   build: {
@@ -44,7 +39,7 @@ export default defineNuxtConfig({
     lazy: true,
     langDir: 'locales',
     defaultLocale: 'en',
-    strategy: 'prefix_except_default',
+    strategy: 'prefix',
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
@@ -61,6 +56,13 @@ export default defineNuxtConfig({
       noExternal: ['vuetify']
     }
   },
+
+  // CSS preprocessors
+  css: [
+    'vuetify/lib/styles/main.sass',
+    '@mdi/font/css/materialdesignicons.css'
+  ],
+  
   
   // App configuration
   app: {

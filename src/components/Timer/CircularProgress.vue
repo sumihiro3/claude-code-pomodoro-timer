@@ -1,15 +1,12 @@
-<template>
-  <div class="circular-progress-container">
-    <v-progress-circular
-      :model-value="progress"
-      :size="size"
-      :width="strokeWidth"
-      :color="color"
-      class="circular-progress"
-    >
-      <slot />
-    </v-progress-circular>
-  </div>
+<template lang="pug">
+.circular-progress-container
+  v-progress-circular.circular-progress(
+    :model-value="progress"
+    :size="size"
+    :width="strokeWidth"
+    :color="color"
+  )
+    slot
 </template>
 
 <script setup lang="ts">

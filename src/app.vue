@@ -1,8 +1,6 @@
-<template>
-  <v-app>
-    <NuxtRouteAnnouncer />
-    <v-main>
-      <NuxtPage />
-    </v-main>
-  </v-app>
+<template lang="pug">
+v-app
+  NuxtRouteAnnouncer
+  v-main
+    NuxtPage
 </template>

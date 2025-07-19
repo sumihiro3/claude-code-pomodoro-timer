@@ -1,4 +1,8 @@
 {
+  "app": {
+    "title": "Timer Pomodoro",
+    "subtitle": "Concentrati e migliora la tua produttività con la Tecnica Pomodoro"
+  },
   "timer": {
     "start": "Avvia",
     "pause": "Pausa",

@@ -1,23 +1,18 @@
-<template>
-  <v-container>
-    <v-row justify="center">
-      <v-col cols="12" md="8" lg="6">
-        <div class="page-header">
-          <h1 class="text-h3 text-center mb-2">
-            {{ $t('app.title') }}
-          </h1>
-          <p class="text-subtitle-1 text-center text-medium-emphasis mb-6">
-            {{ $t('app.subtitle') }}
-          </p>
-        </div>
-        
-        <PomodoroTimer />
-      </v-col>
-    </v-row>
-  </v-container>
+<template lang="pug">
+v-container
+  v-row(justify="center")
+    v-col(cols="12" md="8" lg="6")
+      .page-header
+        h1.text-h3.text-center.mb-2
+          | {{ $t('app.title') }}
+        p.text-subtitle-1.text-center.text-medium-emphasis.mb-6
+          | {{ $t('app.subtitle') }}
+      
+      PomodoroTimer
 </template>
 
 <script setup lang="ts">
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import PomodoroTimer from '~/components/Timer/PomodoroTimer.vue'
 
 useSeoMeta({

@@ -3,6 +3,7 @@
 ## Tech Stack
 - Framework: Nuxt 3 (Latest)
 - Language: TypeScript
+- Template Engine: Pug (for Vue templates)
 - Testing: Vitest (Unit tests)
 - E2E Testing: Playwright
 - UI Component Library: Vuetify
@@ -49,6 +50,7 @@
 ### Code Style
 - Use TypeScript for all new files
 - Use Vue 3 Composition API with `<script setup>`
+- Use Pug for all Vue component templates with `<template lang="pug">`
 - Use composables for reusable logic
 - Prefer arrow functions for methods
 - Use destructuring for imports: `import { ref, computed } from 'vue'`
@@ -60,16 +62,14 @@
 
 ### Component Structure
 ```vue
-<template>
-  <div>
-    <!-- Use Vuetify components -->
-    <v-card>
-      <v-card-title>{{ $t('timer.title') }}</v-card-title>
-      <v-card-text>
-        <!-- Component content -->
-      </v-card-text>
-    </v-card>
-  </div>
+<template lang="pug">
+div
+  //- Use Vuetify components
+  v-card
+    v-card-title
+      | {{ $t('timer.title') }}
+    v-card-text
+      //- Component content
 </template>
 
 <script setup lang="ts">
@@ -86,6 +86,50 @@
 <style scoped>
 /* Component styles (minimal due to Vuetify) */
 </style>
+```
+
+### Pug Template Guidelines
+- Always use `<template lang="pug">` for Vue component templates
+- Use indentation to represent nesting (2 spaces recommended)
+- Attributes in parentheses: `v-btn(color="primary" @click="action")`
+- CSS classes with dot notation: `v-card.my-class` or `div.container`
+- Text content with pipe: `| {{ $t('timer.title') }}`
+- Vue interpolations remain unchanged: `{{ variable }}`
+- Comments with `//- Comment text`
+- Preserve all Vue directives, accessibility attributes, and i18n functions
+
+#### Pug Conversion Examples
+```pug
+// HTML to Pug conversion patterns:
+
+// Attributes
+<v-btn color="primary" @click="action">
+v-btn(color="primary" @click="action")
+
+// CSS Classes
+<div class="container">
+.container
+
+// Combined class and attributes
+<v-card class="timer-card" elevation="2">
+v-card.timer-card(elevation="2")
+
+// Text content
+<h1>{{ title }}</h1>
+h1
+  | {{ title }}
+
+// Multiple attributes (multiline for readability)
+<v-btn
+  color="primary"
+  variant="flat"
+  @click="action"
+>
+v-btn(
+  color="primary"
+  variant="flat"
+  @click="action"
+)
 ```
 
 ### Vuetify Guidelines

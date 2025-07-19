@@ -26,7 +26,8 @@
       "Bash(yarn typecheck)",
       "Bash(yarn build)",
       "Bash(yarn test:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(gh issue comment:*)"
     ],
     "deny": []
   }

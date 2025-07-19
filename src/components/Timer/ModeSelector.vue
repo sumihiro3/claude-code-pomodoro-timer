@@ -4,20 +4,39 @@
       {{ $t('timer.modeSelector') }}
     </v-card-title>
     <v-card-text>
-      <div class="mode-buttons">
+      <div 
+        class="mode-buttons"
+        role="radiogroup"
+        :aria-label="$t('timer.selectTimerMode')"
+      >
         <v-btn
           :variant="currentMode === 'work' ? 'flat' : 'outlined'"
           :color="currentMode === 'work' ? 'primary' : 'default'"
           class="mode-btn"
           block
+          role="radio"
+          :aria-checked="currentMode === 'work'"
+          :aria-label="$t('timer.selectWorkMode', { duration: workDuration })"
           @click="$emit('modeChange', 'work')"
+          @keydown.enter="$emit('modeChange', 'work')"
+          @keydown.space.prevent="$emit('modeChange', 'work')"
         >
           <div class="mode-btn-content">
             <div 
               class="mode-indicator" 
               :style="{ backgroundColor: workColor }"
+              role="img"
+              :aria-label="$t('timer.workModeIndicator')"
             />
-            <span>💼 {{ $t('timer.workSession') }} ({{ workDuration }}{{ $t('timer.minutes') }})</span>
+            <span>
+              <span 
+                role="img" 
+                :aria-label="$t('timer.workIcon')"
+              >
+                💼
+              </span>
+              {{ $t('timer.workSession') }} ({{ workDuration }}{{ $t('timer.minutes') }})
+            </span>
           </div>
         </v-btn>
         <v-btn
@@ -25,14 +44,29 @@
           :color="currentMode === 'shortBreak' ? 'primary' : 'default'"
           class="mode-btn"
           block
+          role="radio"
+          :aria-checked="currentMode === 'shortBreak'"
+          :aria-label="$t('timer.selectShortBreakMode', { duration: shortBreakDuration })"
           @click="$emit('modeChange', 'shortBreak')"
+          @keydown.enter="$emit('modeChange', 'shortBreak')"
+          @keydown.space.prevent="$emit('modeChange', 'shortBreak')"
         >
           <div class="mode-btn-content">
             <div 
               class="mode-indicator" 
               :style="{ backgroundColor: shortBreakColor }"
+              role="img"
+              :aria-label="$t('timer.shortBreakModeIndicator')"
             />
-            <span>☕ {{ $t('timer.shortBreak') }} ({{ shortBreakDuration }}{{ $t('timer.minutes') }})</span>
+            <span>
+              <span 
+                role="img" 
+                :aria-label="$t('timer.coffeeIcon')"
+              >
+                ☕
+              </span>
+              {{ $t('timer.shortBreak') }} ({{ shortBreakDuration }}{{ $t('timer.minutes') }})
+            </span>
           </div>
         </v-btn>
         <v-btn
@@ -40,14 +74,29 @@
           :color="currentMode === 'longBreak' ? 'primary' : 'default'"
           class="mode-btn"
           block
+          role="radio"
+          :aria-checked="currentMode === 'longBreak'"
+          :aria-label="$t('timer.selectLongBreakMode', { duration: longBreakDuration })"
           @click="$emit('modeChange', 'longBreak')"
+          @keydown.enter="$emit('modeChange', 'longBreak')"
+          @keydown.space.prevent="$emit('modeChange', 'longBreak')"
         >
           <div class="mode-btn-content">
             <div 
               class="mode-indicator" 
               :style="{ backgroundColor: longBreakColor }"
+              role="img"
+              :aria-label="$t('timer.longBreakModeIndicator')"
             />
-            <span>🏖️ {{ $t('timer.longBreak') }} ({{ longBreakDuration }}{{ $t('timer.minutes') }})</span>
+            <span>
+              <span 
+                role="img" 
+                :aria-label="$t('timer.beachIcon')"
+              >
+                🏖️
+              </span>
+              {{ $t('timer.longBreak') }} ({{ longBreakDuration }}{{ $t('timer.minutes') }})
+            </span>
           </div>
         </v-btn>
       </div>

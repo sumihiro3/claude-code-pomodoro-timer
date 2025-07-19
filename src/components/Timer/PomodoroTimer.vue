@@ -1,9 +1,19 @@
 <template>
-  <div class="pomodoro-timer">
+  <div 
+    class="pomodoro-timer"
+    role="region"
+    :aria-label="$t('timer.timerRegion')"
+  >
     <v-card class="timer-card">
       <v-card-title class="text-center">
         <div class="timer-header">
-          <span class="mode-emoji">{{ getModeEmoji(currentMode) }}</span>
+          <span 
+            class="mode-emoji"
+            role="img"
+            :aria-label="$t('timer.modeEmoji', { mode: $t(getModeLabel(currentMode)) })"
+          >
+            {{ getModeEmoji(currentMode) }}
+          </span>
           <span>{{ $t(getModeLabel(currentMode)) }}</span>
         </div>
       </v-card-title>
@@ -15,9 +25,17 @@
             :size="240"
             :stroke-width="12"
             :color="getCurrentModeColor()"
+            :aria-label="$t('timer.progressLabel', { progress: Math.round(progress) })"
           >
             <div class="timer-display">
-              <div class="time-text">{{ formattedTime }}</div>
+              <div 
+                class="time-text"
+                role="timer"
+                :aria-live="isRunning ? 'polite' : 'off'"
+                :aria-label="$t('timer.timeRemaining', { time: formattedTime })"
+              >
+                {{ formattedTime }}
+              </div>
               <div class="session-text">
                 {{ $t('timer.session') }}: {{ sessionsCompleted }}
               </div>

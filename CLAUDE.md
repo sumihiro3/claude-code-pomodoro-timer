@@ -45,6 +45,12 @@
 - `yarn preview`: Preview production build locally
 - `yarn install`: Install all dependencies
 
+### Cloudflare Workers Deployment Commands
+- `yarn deploy:dev`: Deploy to Cloudflare Workers development environment
+- `yarn deploy:prod`: Deploy to Cloudflare Workers production environment
+- `yarn dev:wrangler`: Start local development with Wrangler
+- `yarn preview:cloudflare`: Build and preview with Cloudflare Workers locally
+
 ## Development Guidelines
 
 ### Code Style
@@ -440,16 +446,52 @@ interface PomodoroHistory {
 
 ## Deployment Configuration
 
-### Cloudflare Pages
-- Deploy from `dist/` directory after `npm run generate`
-- Use environment variables for any API keys
-- Configure custom domain if needed
-- Enable preview deployments for branches
+### Cloudflare Workers + Pages (Hybrid Deployment)
+The application uses a hybrid deployment approach combining Cloudflare Pages for static assets and Cloudflare Workers for server-side functionality.
 
-### Cloudflare Workers (if needed)
-- Use for any server-side functionality
-- API routes for data synchronization (future feature)
-- Background tasks for notifications
+#### Configuration Files
+- `wrangler.toml`: Cloudflare Workers configuration with development/production environments
+- `nuxt.config.ts`: Nitro configuration with `cloudflare-pages` preset
+- `.github/workflows/`: CI/CD pipelines for automated deployment
+
+#### Environment Setup
+1. **Development Environment** (`develop` branch):
+   - Worker name: `pomodoro-timer-development`
+   - Domain: `dev.pomodoro-timer.example.com`
+   - Auto-deploys on push to `develop` branch
+
+2. **Production Environment** (`main` branch):
+   - Worker name: `pomodoro-timer-production`
+   - Domain: `pomodoro-timer.example.com`
+   - Auto-deploys on push to `main` branch
+
+#### Required GitHub Secrets
+- `CLOUDFLARE_API_TOKEN`: Cloudflare API token with Workers and Pages permissions
+- `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare account ID
+
+#### Deployment Process
+1. **Automated CI/CD**: 
+   - TypeScript type checking → ESLint → Unit tests → E2E tests → Build → Deploy
+   - Tests must pass before deployment proceeds
+   - Deployment only occurs on direct pushes (not PRs)
+
+2. **Manual Deployment**:
+   ```bash
+   # Development
+   yarn build && yarn deploy:dev
+   
+   # Production
+   yarn build && yarn deploy:prod
+   ```
+
+#### Local Development with Cloudflare
+```bash
+# Start local Wrangler development server
+yarn dev:wrangler
+
+# Build and preview with Cloudflare Workers
+yarn preview:cloudflare
+```
 
 ## Browser Compatibility
 - Target modern browsers (ES2020+)

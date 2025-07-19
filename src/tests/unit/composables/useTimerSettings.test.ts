@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import type { PomodoroSettings } from '~/types'
 
 // Mock localStorage
 const localStorageMock = {
@@ -56,29 +57,29 @@ vi.mock('../../../composables/useTimerSettings', async () => {
           const parsed = JSON.parse(stored)
           
           if (isValidPomodoroSettings(parsed)) {
-            settings.value = parsed
+            settings.value = parsed as PomodoroSettings
           } else {
             const validatedSettings = validatePomodoroSettings({
               ...new DefaultPomodoroSettings(),
               ...parsed
             })
-            settings.value = validatedSettings
+            settings.value = validatedSettings as PomodoroSettings
             saveSettings()
           }
         }
       } catch (error) {
-        const err = error
+        const err = error as Error
         if (err instanceof SyntaxError) {
           storageError.value = {
             type: 'parse_error',
             message: 'Failed to parse stored settings',
-            originalError: err
+            originalError: err as Error
           }
         } else {
           storageError.value = {
             type: 'invalid_data',
             message: 'Stored settings data is invalid',
-            originalError: err
+            originalError: err as Error
           }
         }
         console.error('Failed to load settings from localStorage:', error)
@@ -103,18 +104,18 @@ vi.mock('../../../composables/useTimerSettings', async () => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(validatedSettings))
         return true
       } catch (error) {
-        const err = error
+        const err = error as Error
         if (err.name === 'QuotaExceededError') {
           storageError.value = {
             type: 'quota_exceeded',
             message: 'Storage quota exceeded',
-            originalError: err
+            originalError: err as Error
           }
         } else {
           storageError.value = {
             type: 'invalid_data',
             message: 'Failed to save settings',
-            originalError: err
+            originalError: err as Error
           }
         }
         console.error('Failed to save settings to localStorage:', error)
@@ -122,11 +123,11 @@ vi.mock('../../../composables/useTimerSettings', async () => {
       }
     }
 
-    const updateSettings = (newSettings) => {
+    const updateSettings = (newSettings: Partial<PomodoroSettings>) => {
       try {
         const mergedSettings = { ...settings.value, ...newSettings }
         const validatedSettings = validatePomodoroSettings(mergedSettings)
-        settings.value = validatedSettings
+        settings.value = validatedSettings as PomodoroSettings
         return saveSettings()
       } catch (error) {
         console.error('Failed to update settings:', error)

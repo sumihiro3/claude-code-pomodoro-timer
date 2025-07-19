@@ -97,7 +97,7 @@ export class DefaultPomodoroSettings implements PomodoroSettings {
   notifications = {
     visual: true,
     audio: true,
-    sound: 'bell' as const
+    sound: 'bell' as NotificationSound
   };
   theme: ThemeMode = 'system';
   language: string = 'en'; // Default to English

@@ -1,0 +1,15 @@
+# Cloudflare Pages設定ファイル
+# ポモドーロタイマーアプリのデプロイ設定（開発・本番環境対応）
+
+# Cloudflare Pages設定
+name = "pomodoro-timer"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-07-15"
+
+# 本番環境設定
+[env.production.vars]
+ENVIRONMENT = "production"
+
+# プレビュー環境設定（developブランチ対応）
+[env.preview.vars]
+ENVIRONMENT = "develop"

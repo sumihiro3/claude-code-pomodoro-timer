@@ -90,7 +90,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --env development
+          command: deploy --env develop
       
       # デプロイ結果通知
       - name: Notify deployment success

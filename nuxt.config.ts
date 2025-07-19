@@ -19,6 +19,22 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify']
   },
+
+  /**
+   * Nitro設定（Cloudflare Workers対応）
+   * Cloudflare Pagesプリセットを使用してサーバーレス環境にデプロイ
+   */
+  nitro: {
+    preset: 'cloudflare-pages',
+    cloudflare: {
+      pages: {
+        routes: {
+          include: ['/_nuxt/*', '/api/*'],
+          exclude: ['/images/*', '/*.ico', '/*.png', '/*.jpg', '/*.svg']
+        }
+      }
+    }
+  },
   
   /**
    * Nuxtモジュール設定

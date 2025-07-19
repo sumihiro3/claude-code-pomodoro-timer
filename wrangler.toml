@@ -1,0 +1,41 @@
+# Cloudflare Workers設定ファイル
+# ポモドーロタイマーアプリのデプロイ設定（開発・本番環境対応）
+
+# プロジェクト基本設定
+name = "pomodoro-timer"
+main = ".output/server/index.mjs"
+compatibility_date = "2025-07-15"
+compatibility_flags = ["nodejs_compat"]
+
+# 本番環境設定（mainブランチ）
+[env.production]
+name = "pomodoro-timer"
+# workers.devサブドメインを使用: pomodoro-timer.your-account.workers.dev
+
+# 開発環境設定（developブランチ）
+[env.develop] 
+name = "pomodoro-timer-develop"
+# workers.devサブドメインを使用: pomodoro-timer-develop.your-account.workers.dev
+
+# アセット設定（Cloudflare Pages連携）
+[site]
+bucket = ".output/public"
+
+# 環境変数設定（実際の値はGitHub Secretsで管理）
+[vars]
+ENVIRONMENT = "production"
+
+[env.develop.vars]
+ENVIRONMENT = "develop"
+
+# ビルド設定
+[build]
+command = "yarn build"
+
+# デプロイメント設定
+[deployment]
+compatibility_date = "2025-07-15"
+
+# Node.js互換性設定
+[nodejs_compat]
+enabled = true

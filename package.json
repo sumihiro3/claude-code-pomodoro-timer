@@ -12,10 +12,10 @@
     "test:e2e": "playwright test",
     "lint": "eslint .",
     "typecheck": "nuxt typecheck",
-    "deploy:dev": "wrangler deploy --env develop",
-    "deploy:prod": "wrangler deploy --env production",
+    "deploy:dev": "yarn generate && wrangler pages deploy dist --project-name pomodoro-timer-develop",
+    "deploy:prod": "yarn generate && wrangler pages deploy dist --project-name pomodoro-timer-production",
     "dev:wrangler": "wrangler dev",
-    "preview:cloudflare": "yarn build && wrangler dev"
+    "preview:cloudflare": "yarn generate && wrangler pages dev dist"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",

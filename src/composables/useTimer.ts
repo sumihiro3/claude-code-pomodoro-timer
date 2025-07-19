@@ -1,6 +1,12 @@
 import { ref, computed, onUnmounted } from 'vue'
 import type { SessionType, PomodoroSession } from '~/types'
 
+interface TimerError {
+  type: 'invalid_duration' | 'timer_conflict' | 'session_creation_failed';
+  message: string;
+  originalError?: Error;
+}
+
 export function useTimer(
   workDuration: number = 25,
   shortBreakDuration: number = 5,
@@ -11,16 +17,37 @@ export function useTimer(
   const isRunning = ref(false)
   const sessionsCompleted = ref(0)
   const intervalRef = ref<NodeJS.Timeout | null>(null)
+  const currentSession = ref<PomodoroSession | null>(null)
+  const timerError = ref<TimerError | null>(null)
+
+  const validateDuration = (duration: number): boolean => {
+    return duration > 0 && duration <= 7200 && Number.isInteger(duration) // Max 2 hours, positive integer
+  }
 
   const getDuration = (mode: SessionType): number => {
+    let duration: number
     switch (mode) {
       case 'work':
-        return workDuration * 60
+        duration = workDuration * 60
+        break
       case 'shortBreak':
-        return shortBreakDuration * 60
+        duration = shortBreakDuration * 60
+        break
       case 'longBreak':
-        return longBreakDuration * 60
+        duration = longBreakDuration * 60
+        break
     }
+
+    if (!validateDuration(duration)) {
+      timerError.value = {
+        type: 'invalid_duration',
+        message: `Invalid duration for ${mode}: ${duration} seconds`
+      }
+      // Return a safe default
+      return mode === 'work' ? 25 * 60 : mode === 'shortBreak' ? 5 * 60 : 15 * 60
+    }
+
+    return duration
   }
 
   const currentDuration = computed(() => getDuration(currentMode.value))
@@ -57,30 +84,76 @@ export function useTimer(
     }
   }
 
-  const start = () => {
-    if (isRunning.value) return
-    
-    isRunning.value = true
-    intervalRef.value = setInterval(() => {
-      timeLeft.value--
-      
-      if (timeLeft.value <= 0) {
-        complete()
+  const start = (): boolean => {
+    try {
+      if (isRunning.value) {
+        timerError.value = {
+          type: 'timer_conflict',
+          message: 'Timer is already running'
+        }
+        return false
       }
-    }, 1000)
-  }
 
-  const pause = () => {
-    isRunning.value = false
-    if (intervalRef.value) {
-      clearInterval(intervalRef.value)
-      intervalRef.value = null
+      timerError.value = null
+
+      // Create a new session if none exists
+      if (!currentSession.value) {
+        currentSession.value = createSession()
+      }
+      
+      isRunning.value = true
+      intervalRef.value = setInterval(() => {
+        timeLeft.value--
+        
+        if (timeLeft.value <= 0) {
+          complete()
+        }
+      }, 1000)
+
+      return true
+    } catch (error) {
+      timerError.value = {
+        type: 'timer_conflict',
+        message: 'Failed to start timer',
+        originalError: error as Error
+      }
+      console.error('Timer start failed:', error)
+      return false
     }
   }
 
-  const reset = () => {
-    pause()
-    timeLeft.value = currentDuration.value
+  const pause = (): boolean => {
+    try {
+      isRunning.value = false
+      if (intervalRef.value) {
+        clearInterval(intervalRef.value)
+        intervalRef.value = null
+      }
+
+      // Mark current session as interrupted if it exists
+      if (currentSession.value && !currentSession.value.completed) {
+        currentSession.value.interrupted = true
+        currentSession.value.endTime = new Date().toISOString()
+      }
+
+      return true
+    } catch (error) {
+      console.error('Timer pause failed:', error)
+      return false
+    }
+  }
+
+  const reset = (): boolean => {
+    try {
+      pause()
+      timeLeft.value = currentDuration.value
+      currentSession.value = null
+      timerError.value = null
+      return true
+    } catch (error) {
+      console.error('Timer reset failed:', error)
+      return false
+    }
   }
 
   const complete = () => {
@@ -101,21 +174,53 @@ export function useTimer(
     timeLeft.value = getDuration(mode)
   }
 
-  const createSession = (): PomodoroSession => {
-    return {
-      id: Date.now().toString(),
-      type: currentMode.value,
-      duration: currentDuration.value,
-      startTime: new Date().toISOString(),
-      endTime: new Date().toISOString(),
-      completed: false,
-      interrupted: false
+  const createSession = (): PomodoroSession | null => {
+    try {
+      // Generate a more robust ID using crypto.randomUUID if available
+      let sessionId: string
+      if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+        sessionId = crypto.randomUUID()
+      } else {
+        // Fallback to timestamp-based ID
+        sessionId = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+      }
+
+      return {
+        id: sessionId,
+        type: currentMode.value,
+        duration: currentDuration.value,
+        startTime: new Date().toISOString(),
+        endTime: new Date().toISOString(),
+        completed: false,
+        interrupted: false
+      }
+    } catch (error) {
+      timerError.value = {
+        type: 'session_creation_failed',
+        message: 'Failed to create session',
+        originalError: error as Error
+      }
+      console.error('Session creation failed:', error)
+      return null
     }
   }
 
+  const clearTimerError = () => {
+    timerError.value = null
+  }
+
   onUnmounted(() => {
-    if (intervalRef.value) {
-      clearInterval(intervalRef.value)
+    try {
+      if (intervalRef.value) {
+        clearInterval(intervalRef.value)
+      }
+      // Mark session as interrupted if timer is unmounted while running
+      if (currentSession.value && isRunning.value) {
+        currentSession.value.interrupted = true
+        currentSession.value.endTime = new Date().toISOString()
+      }
+    } catch (error) {
+      console.error('Timer cleanup failed:', error)
     }
   })
 
@@ -124,6 +229,8 @@ export function useTimer(
     timeLeft,
     isRunning,
     sessionsCompleted,
+    currentSession,
+    timerError,
     progress,
     formattedTime,
     currentDuration,
@@ -133,6 +240,7 @@ export function useTimer(
     pause,
     reset,
     switchMode,
-    createSession
+    createSession,
+    clearTimerError
   }
 }
